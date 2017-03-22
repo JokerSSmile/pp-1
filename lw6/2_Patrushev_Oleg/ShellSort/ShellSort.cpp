@@ -1,66 +1,60 @@
 #include "stdafx.h"
 
-std::mutex mutex;
+/*
+#include <iostream>
 
-void ShellLinear(std::vector<int>& vec)
+void merge(int a[], int low, int mid, int high)
 {
-	size_t length = vec.size();
-	for (size_t step = vec.size() / 2; step > 0; step /= 2)
-	{
-		for (size_t i = step; i < length; i++)
-		{
-			size_t j;
-			int tempValue;
-			tempValue = vec[i];
-			for (j = i; j >= step; j -= step)
-			{
-				if (tempValue < vec[j - step])
-				{
-					vec[j] = vec[j - step];
-				}
-				else
-				{
-					break;
-				}
-			}
-			vec[j] = tempValue;
-		}
+	int left = low;
+	int right = mid + 1;
+
+	int b[1];//int b[high - low + 1];
+	int i, cur = 0;
+
+	while (left <= mid && right <= high) {
+		if (a[left] <= a[right])
+			b[cur++] = a[left++];
+		else
+			b[cur++] = a[right++];
+	}
+
+	while (left <= mid) b[cur++] = a[left++];
+	while (right <= high) b[cur++] = a[right++];
+	cur--;
+	while (cur >= 0) {
+		a[low + cur] = b[cur];
+		cur--;
 	}
 }
 
-void ThreadFunc(std::vector<int>& vec, size_t step)
-{
-	size_t length = vec.size();
-	for (size_t i = step; i < length; i++)
-	{
-		size_t j;
-		int tempValue;
-		tempValue = vec[i];
-		mutex.lock();
-		for (j = i; j >= step; j -= step)
-		{
-			if (tempValue < vec[j - step])
-			{
-				vec[j] = vec[j - step];
-			}
-			else
-			{
-				break;
-			}
-		}
-		vec[j] = tempValue;
-		mutex.unlock();
-	}
+void mergeSort(int a[], int p, int r) {
+
+
+	std::vector<std::future<void>> thread_pool;
+	int q;
+
+	if (p >= r) return;
+	q = (p + r) / 2;
+
+	thread_pool.push_back(std::async(std::launch::async, mergeSort, a, p, q));
+	thread_pool.push_back(std::async(std::launch::async, mergeSort, a, q + 1, r));
+
+	merge(a, p, q, r);
 }
 
-void ShellParallel(std::vector<int>& vec)
+
+void ThreadFunc(std::vector<int>& num, int& flag, int& temp, int& d)
+{
+	
+}
+
+void ShellParallel(std::vector<int>& num)
 {
 	std::vector<std::thread> threads;
 
-	for (size_t step = vec.size() / 2; step > 0; step /= 2)
-	{
-		threads.push_back(std::thread(ThreadFunc, std::ref(vec), step));
-	}
+	
+	//threads.push_back(std::thread(ThreadFunc, std::ref(num), gap));
+
 	for (auto &thread : threads) {
 		thread.join();
 	}
@@ -91,23 +85,29 @@ void OutputWorkTime(std::function<void()> callback)
 	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << std::endl;
 }
 
+
 int main(int argc, char* argv[])
 {
-	std::vector<int> vecp = ReadFromFile("input1.txt");
-	std::vector<int> vecl = ReadFromFile("input1.txt");
+	std::vector<int> vecp = ReadFromFile("input.txt");
+	std::vector<int> vecl = ReadFromFile("input.txt");
 
-	OutputWorkTime([&]() {ShellLinear(vecl);});
-	OutputWorkTime([&]() {ShellParallel(vecp);});
+	std::vector<int> resultl;
+	std::vector<int> resultp;
+	int* a = &vecp[0];
+
+	OutputWorkTime([&]() {mergeSort(a, 0, vecp.size()); });
+	//OutputWorkTime([&]() {resultp = mergeSortParallel(vecp);});
 	
-	//if (std::equal(vecp.begin(), vecp.end(), vecl.begin()))
-	//{
-	//	std::cout << "ere" << std::endl;
-	//}
+	if (std::equal(resultl.begin(), resultl.end(), resultp.begin()))
+	{
+		std::cout << "ere" << std::endl;
+	}
 
 	for (size_t i = 0; i < vecl.size(); i++)
 	{
-		std::cout << vecl[i] << "  " << vecp[i] << std::endl;
+		//std::cout << resultl[i] << "  " << resultp[i] << std::endl;
 	}
 
 	return 0;
 }
+*/

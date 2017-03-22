@@ -15,5 +15,8 @@
 #include <fstream>
 #include <sstream>
 #include <future>
+#include <algorithm>
+#include <iterator>
+#include <utility>
 
 // TODO: Установите здесь ссылки на дополнительные заголовки, требующиеся для программы
