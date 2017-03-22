@@ -7,6 +7,6 @@ public:
 	LinearMergeSorter(const std::vector<int>& vec);
 	~LinearMergeSorter() = default;
 
-	void MergeSort(int p, int r) override;
+	void MergeSort(size_t p, size_t r) override;
 };
 

@@ -7,5 +7,5 @@ public:
 	ParallelMergeSorter(const std::vector<int>& vec);
 	~ParallelMergeSorter() = default;
 
-	void MergeSort(int p, int r) override;
+	void MergeSort(size_t p, size_t r) override;
 };

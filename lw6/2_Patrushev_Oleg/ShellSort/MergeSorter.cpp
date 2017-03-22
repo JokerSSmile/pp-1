@@ -15,25 +15,37 @@ std::vector<int> MergeSorter::GetVector()
 }
 
 
-void MergeSorter::Merge(int low, int mid, int high)
+void MergeSorter::Merge(size_t low, size_t mid, size_t high)
 {
-	int left = low;
-	int right = mid + 1;
+	size_t left = low;
+	size_t right = mid + 1;
 
 	std::vector<int> b(high - low + 1);
-	int i, cur = 0;
+	int cur = 0;
 
-	while (left <= mid && right <= high) {
+	while (left <= mid && right <= high)
+	{
 		if (m_vector[left] <= m_vector[right])
+		{
 			b[cur++] = m_vector[left++];
+		}
 		else
+		{
 			b[cur++] = m_vector[right++];
+		}
 	}
 
-	while (left <= mid) b[cur++] = m_vector[left++];
-	while (right <= high) b[cur++] = m_vector[right++];
+	while (left <= mid)
+	{
+		b[cur++] = m_vector[left++];
+	}
+	while (right <= high)
+	{
+		b[cur++] = m_vector[right++];
+	}
 	cur--;
-	while (cur >= 0) {
+	while (cur >= 0)
+	{
 		m_vector[low + cur] = b[cur];
 		cur--;
 	}

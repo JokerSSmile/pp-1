@@ -6,31 +6,29 @@ ParallelMergeSorter::ParallelMergeSorter(const std::vector<int>& vec)
 {
 }
 
-void ParallelMergeSorter::MergeSort(int l, int r)
+void ParallelMergeSorter::MergeSort(size_t l, size_t r)
 {
-	std::vector<std::thread> thread_poolLocal;
-	int length = r - l;
+	size_t length = r - l;
 
 	if (length <= 0)
 	{
 		return;
 	}
-	int q = (l + r) / 2;
+
+	size_t q = (l + r) / 2;
 	if (length >= m_startVectorLength / 10)
 	{
-		thread_poolLocal.push_back(std::thread(&ParallelMergeSorter::MergeSort, this, l, q));
-		thread_poolLocal.push_back(std::thread(&ParallelMergeSorter::MergeSort, this, q + 1, r));
+		std::vector<std::thread> threads;
+		threads.push_back(std::thread(&ParallelMergeSorter::MergeSort, this, l, q));
+		threads.push_back(std::thread(&ParallelMergeSorter::MergeSort, this, q + 1, r));
 
-		thread_poolLocal[0].join();
-		thread_poolLocal[1].join();
+		std::for_each(threads.begin(), threads.end(), [](std::thread& thread) { thread.join(); });
 	}
 	else
 	{
 		MergeSort(l, q);
 		MergeSort(q + 1, r);
 	}
-	
-
 
 	Merge(l, q, r);
 }

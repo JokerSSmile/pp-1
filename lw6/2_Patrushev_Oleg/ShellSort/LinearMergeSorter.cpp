@@ -6,10 +6,10 @@ LinearMergeSorter::LinearMergeSorter(const std::vector<int>& vec)
 {
 }
 
-void LinearMergeSorter::MergeSort(int p, int r)
+void LinearMergeSorter::MergeSort(size_t p, size_t r)
 {
 	if (p >= r) return;
-	int q = (p + r) / 2;
+	size_t q = (p + r) / 2;
 
 	MergeSort(p, q);
 	MergeSort(q + 1, r);
