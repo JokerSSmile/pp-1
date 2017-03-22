@@ -13,5 +13,6 @@ public:
 	void Merge(int low, int mid, int high);
 
 	std::vector<int> m_vector;
+	size_t m_startVectorLength;
 };
 

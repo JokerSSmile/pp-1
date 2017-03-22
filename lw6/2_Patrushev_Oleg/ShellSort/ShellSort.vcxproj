@@ -141,12 +141,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LinearMergeSorter.h" />
     <ClInclude Include="MergeSorter.h" />
     <ClInclude Include="ParallelMergeSorter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LinearMergeSorter.cpp" />
     <ClCompile Include="MergeSorter.cpp" />
     <ClCompile Include="ParallelMergeSorter.cpp" />
     <ClCompile Include="ShellSort.cpp" />

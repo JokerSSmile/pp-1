@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ParallelMergeSorter.h"
-
+#include "LinearMergeSorter.h"
 
 // using namespace std;
 // std::vector<int> a = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };  /* target array */
@@ -62,10 +62,15 @@ std::vector<int> ReadFromFile(const std::string & fileName)
 	return result;
 }
 
-
-void asas(int j)
+void OutputWorkTime(std::function<void()> callback)
 {
-	return;
+	std::chrono::time_point<std::chrono::system_clock> startTime, endTime;
+
+	startTime = std::chrono::system_clock::now();
+	callback();
+	endTime = std::chrono::system_clock::now();
+
+	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << std::endl;
 }
 
 int main()
@@ -78,18 +83,26 @@ int main()
 	//mergeSort(0, arrayLen - 1);
 
 	//for (i = 0; i < arrayLen; i++) printf("%d ", a[i]);
-	auto startVec = ReadFromFile("input2.txt");
+	auto startVec = ReadFromFile("input.txt");
 
 	ParallelMergeSorter pms(startVec);
-	pms.MergeSort(0, startVec.size() - 1);
+	LinearMergeSorter lms(startVec);
+	
+	OutputWorkTime([&]() {lms.MergeSort(0, startVec.size() - 1); });
+	OutputWorkTime([&]() {pms.MergeSort(0, startVec.size() - 1); });
 
 	auto result = pms.GetVector();
 
-	for (auto a : result)
-	{
-		std::cout << a  << " ";
-	}
-	std::cout << std::endl;
+	//if (std::equal(pms.GetVector().begin(), pms.GetVector().end(), lms.GetVector().begin()))
+	//{
+	//	std::cout << "ere" << std::endl;
+	//}
+
+	//for (auto a : result)
+	//{
+		//std::cout << a  << " ";
+	//}
+	//std::cout << std::endl;
 
 	return 0;
 }

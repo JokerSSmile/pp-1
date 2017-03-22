@@ -4,8 +4,9 @@
 
 MergeSorter::MergeSorter(const std::vector<int>& vec)
 	: m_vector(vec)
+	, m_startVectorLength(vec.size())
 {
-
+	
 }
 
 std::vector<int> MergeSorter::GetVector()
