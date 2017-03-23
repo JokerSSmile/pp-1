@@ -8,8 +8,7 @@ public:
 	virtual void MergeSort(size_t p, size_t r) = 0;
 	std::vector<int> GetVector();
 
-public:
-
+protected:
 	void Merge(size_t low, size_t mid, size_t high);
 
 	std::vector<int> m_vector;

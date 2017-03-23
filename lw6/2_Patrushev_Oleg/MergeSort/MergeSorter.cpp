@@ -14,7 +14,6 @@ std::vector<int> MergeSorter::GetVector()
 	return m_vector;
 }
 
-
 void MergeSorter::Merge(size_t low, size_t mid, size_t high)
 {
 	size_t left = low;
