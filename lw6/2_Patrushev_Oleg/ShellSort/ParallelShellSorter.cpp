@@ -22,7 +22,7 @@ void ParallelShellSorter::Sort()
 	{
 		m_threads.push_back(std::thread(&ParallelShellSorter::ThreadFunction, this, h));
 	}
-	std::for_each(m_threads.begin(), m_threads.end(), [](std::thread& thread) { thread.join(); });
+	std::for_each(m_threads.begin(), m_threads.end(), [](std::thread& thread) { thread.join(); thread.~thread(); });
 }
 
 std::vector<int> ParallelShellSorter::GetVector()

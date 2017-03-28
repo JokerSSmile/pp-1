@@ -13,5 +13,6 @@ public:
 private:
 	std::vector<std::thread> m_threads;
 	size_t m_startVecSize;
+	
 };
 

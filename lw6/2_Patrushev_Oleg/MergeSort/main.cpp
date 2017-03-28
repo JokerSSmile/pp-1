@@ -16,8 +16,9 @@ int main(int argc, char* argv[])
 	ParallelMergeSorter pms(startVec);
 	LinearMergeSorter lms(startVec);
 	
+	
 	OutputWorkTime([&]() {lms.MergeSort(0, startVec.size() - 1); });
 	OutputWorkTime([&]() {pms.MergeSort(0, startVec.size() - 1); });
-
+	
 	return 0;
 }
