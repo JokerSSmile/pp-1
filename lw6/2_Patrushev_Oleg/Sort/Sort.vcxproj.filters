@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы исходного кода">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Abstarct">
+      <UniqueIdentifier>{73d87968-c207-422e-9b2d-e59314a04260}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Abstract">
+      <UniqueIdentifier>{5f6a8e90-67f0-4ac5-afbd-47f1c798a5fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\MergeSort">
+      <UniqueIdentifier>{c4f82af3-5a2a-4aa9-b153-a2c3e29e3225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\MergeSort">
+      <UniqueIdentifier>{6fd1a227-aeac-4c88-92d2-86d19e919091}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\ShellSort">
+      <UniqueIdentifier>{99995135-2073-4083-96d0-c62a9c89c91e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\ShellSort">
+      <UniqueIdentifier>{a1e00922-43c0-48f8-8a92-2490308de5bf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="ISorter.h">
+      <Filter>Заголовочные файлы\Abstarct</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSorter.h">
+      <Filter>Заголовочные файлы\Abstarct</Filter>
+    </ClInclude>
+    <ClInclude Include="SortFunctions.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMergeSorter.h">
+      <Filter>Заголовочные файлы\MergeSort</Filter>
+    </ClInclude>
+    <ClInclude Include="ParallelMergeSorter.h">
+      <Filter>Заголовочные файлы\MergeSort</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearMergeSorter.h">
+      <Filter>Заголовочные файлы\MergeSort</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseShellSorter.h">
+      <Filter>Заголовочные файлы\ShellSort</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearShellSorter.h">
+      <Filter>Заголовочные файлы\ShellSort</Filter>
+    </ClInclude>
+    <ClInclude Include="ParallelShellSorter.h">
+      <Filter>Заголовочные файлы\ShellSort</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Sort.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSorter.cpp">
+      <Filter>Файлы исходного кода\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearMergeSorter.cpp">
+      <Filter>Файлы исходного кода\MergeSort</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseMergeSorter.cpp">
+      <Filter>Файлы исходного кода\MergeSort</Filter>
+    </ClCompile>
+    <ClCompile Include="ParallelMergeSorter.cpp">
+      <Filter>Файлы исходного кода\MergeSort</Filter>
+    </ClCompile>
+    <ClCompile Include="SortFunctions.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseShellSorter.cpp">
+      <Filter>Файлы исходного кода\ShellSort</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearShellSorter.cpp">
+      <Filter>Файлы исходного кода\ShellSort</Filter>
+    </ClCompile>
+    <ClCompile Include="ParallelShellSorter.cpp">
+      <Filter>Файлы исходного кода\ShellSort</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

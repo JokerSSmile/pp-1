@@ -9,14 +9,9 @@
 
 #include <stdio.h>
 #include <tchar.h>
-#include <iostream>
-#include <vector>
+
 #include <thread>
-#include <fstream>
-#include <sstream>
-#include <future>
 #include <algorithm>
-#include <iterator>
-#include <utility>
+#include <iostream>
 
 // TODO: Установите здесь ссылки на дополнительные заголовки, требующиеся для программы

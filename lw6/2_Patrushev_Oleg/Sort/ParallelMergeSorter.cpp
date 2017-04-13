@@ -1,13 +1,14 @@
 #include "stdafx.h"
 #include "ParallelMergeSorter.h"
+#include "SortFunctions.h"
 
-ParallelMergeSorter::ParallelMergeSorter(const std::vector<int>& vec)
-	: MergeSorter(vec)
+CParallelMergeSorter::CParallelMergeSorter(const std::vector<int>& vec)
+	: CBaseMergeSorter(vec)
 	, m_coresCount(std::thread::hardware_concurrency())
 {
 }
 
-void ParallelMergeSorter::MergeSort(size_t l, size_t r)
+void CParallelMergeSorter::MergeSort(size_t l, size_t r)
 {
 	size_t length = r - l;
 
@@ -17,14 +18,14 @@ void ParallelMergeSorter::MergeSort(size_t l, size_t r)
 	}
 
 	size_t m = (l + r) / 2;
-	
-	if (r - l + 1 == m_startVectorLength / (m_coresCount))
+
+	if (r - l + 1 == m_startVectorSize / (m_coresCount))
 	{
 		std::cout << "starting thread " << l << " " << r << std::endl;
 		std::vector<std::thread> threads;
-		threads.push_back(std::thread(&ParallelMergeSorter::MergeSort, this, l, m));
-		threads.push_back(std::thread(&ParallelMergeSorter::MergeSort, this, m + 1, r));
-			
+		threads.push_back(std::thread(&CParallelMergeSorter::MergeSort, this, l, m));
+		threads.push_back(std::thread(&CParallelMergeSorter::MergeSort, this, m + 1, r));
+
 		std::for_each(threads.begin(), threads.end(), [](std::thread& thread) { thread.join(); thread.~thread(); });
 	}
 	else
@@ -33,5 +34,5 @@ void ParallelMergeSorter::MergeSort(size_t l, size_t r)
 		MergeSort(m + 1, r);
 	}
 
-	Merge(l, m, r);
+	utils::Merge(m_vector, l, m, r);
 }
